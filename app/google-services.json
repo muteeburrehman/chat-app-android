@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "656897384288",
+    "project_id": "cbmessenger-cff09",
+    "storage_bucket": "cbmessenger-cff09.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:656897384288:android:c5b75ce1d7278ce9c1c805",
+        "android_client_info": {
+          "package_name": "pk.codebase.cbmessenger"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDvaci5Kr3DfhfJJzV0we15sr3695Ln0_M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
