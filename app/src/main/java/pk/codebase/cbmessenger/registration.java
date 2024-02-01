@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -41,10 +42,15 @@ public class registration extends AppCompatActivity {
     String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
     FirebaseDatabase database;
     FirebaseStorage storage;
+
+    ProgressDialog progressDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Establishing the account!");
+        progressDialog.setCancelable(false);
         getSupportActionBar().hide();
         database = FirebaseDatabase.getInstance();
         storage = FirebaseStorage.getInstance();
@@ -79,12 +85,16 @@ public class registration extends AppCompatActivity {
 
                 if(TextUtils.isEmpty(namee) || TextUtils.isEmpty(emaill)
                 || TextUtils.isEmpty(Password) || TextUtils.isEmpty(cPassword)){
+                    progressDialog.dismiss();
                     Toast.makeText(registration.this, "Please Enter Valid Information", Toast.LENGTH_SHORT).show();
                 } else if (!emaill.matches(emailPattern)) {
+                    progressDialog.dismiss();
                     reg_email.setError("Type a Valid Email here!");
                 } else if (Password.length()<6) {
+                    progressDialog.dismiss();
                     reg_password.setError("Password must be 6 characters or more");
                 } else if (!Password.equals(cPassword)) {
+                    progressDialog.dismiss();
                     reg_password.setError("The password doesn't match");
                 }else {
                     auth.createUserWithEmailAndPassword(emaill,Password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -109,7 +119,7 @@ public class registration extends AppCompatActivity {
                                                             @Override
                                                             public void onComplete(@NonNull Task<Void> task) {
                                                                 if (task.isSuccessful()){
-//                                                                    progressDialog.show();
+                                                                    progressDialog.show();
                                                                     Intent intent = new Intent(registration.this,MainActivity.class);
                                                                     startActivity(intent);
                                                                     finish();
@@ -131,7 +141,7 @@ public class registration extends AppCompatActivity {
                                         @Override
                                         public void onComplete(@NonNull Task<Void> task) {
                                             if (task.isSuccessful()){
-//                                                progressDialog.show();
+                                                progressDialog.show();
                                                 Intent intent = new Intent(registration.this,MainActivity.class);
                                                 startActivity(intent);
                                                 finish();
