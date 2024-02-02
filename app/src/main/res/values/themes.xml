@@ -13,6 +13,11 @@
 
         <item name="android:statusBarColor">@color/black</item>
     </style>
-
+    <style name="dialoge">
+        <item name="android:windowBackground">@drawable/empty_background</item>
+        <item name="windowNoTitle">true</item>
+        <item name="windowMinWidthMajor">80%</item>
+        <item name="windowActionBar">false</item>
+    </style>
     <style name="Theme.CBMessenger" parent="Base.Theme.CBMessenger" />
 </resources>

@@ -2,7 +2,7 @@ package pk.codebase.cbmessenger;
 
 public class Users {
     String profilepic,mail,userName,password,userId,lastMessage,status;
-
+    public Users(){}
     public Users(String userId, String userName, String maill, String password, String profilepic, String status) {
         this.userId = userId;
         this.userName = userName;
