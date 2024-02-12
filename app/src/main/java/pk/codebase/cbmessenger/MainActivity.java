@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     FirebaseDatabase database;
     ArrayList<Users> usersArrayList;
     ImageView imglogout;
+    ImageView camButton, setButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,9 +39,17 @@ public class MainActivity extends AppCompatActivity {
         database = FirebaseDatabase.getInstance();
         auth = FirebaseAuth.getInstance();
 
+        camButton = findViewById(R.id.camBut);
+        setButton = findViewById(R.id.settingBut);
+
         DatabaseReference reference = database.getReference().child("user");
 
         usersArrayList = new ArrayList<>();
+        // if the user is not logged in then the user will directed to login page
+        auth = FirebaseAuth.getInstance();
+        mainUserRecyclerView = findViewById(R.id.mainUserRecyclerView);
+        adapter = new UserAdapter(MainActivity.this,usersArrayList);
+        mainUserRecyclerView.setAdapter(adapter);
 
         reference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -87,12 +96,24 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        setButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, setting.class);
+                startActivity(intent);
+            }
+        });
 
-        // if the user is not logged in then the user will directed to login page
-        auth = FirebaseAuth.getInstance();
-        mainUserRecyclerView = findViewById(R.id.mainUserRecyclerView);
-        adapter = new UserAdapter(MainActivity.this,usersArrayList);
-        mainUserRecyclerView.setAdapter(adapter);
+        camButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+                startActivityForResult(intent,10);
+            }
+        });
+
+
+
 
         mainUserRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         if(auth.getCurrentUser() == null){
