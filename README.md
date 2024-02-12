@@ -6,7 +6,7 @@ Chat App is a simple messaging application for Android devices built using Fireb
 
 ## Features
 - Splash screen
- ![Screenshot from 2024-02-12 17-18-07](https://github.com/muteeburrehman/chat-app-android/assets/139336141/ed948d64-01e5-46f2-99fa-b53d44599d1a)
+- ![Screenshot from 2024-02-12 17-18-07](https://github.com/muteeburrehman/chat-app-android/assets/139336141/ed948d64-01e5-46f2-99fa-b53d44599d1a)
 - User authentication (register and login)
   
  ![register](https://github.com/muteeburrehman/chat-app-android/assets/139336141/d6eded44-2b1c-4848-99d6-3ee3f7bf9b0d)
